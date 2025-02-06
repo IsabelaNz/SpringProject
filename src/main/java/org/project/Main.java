@@ -2,6 +2,7 @@ package org.project;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.project.models.Produto;
+import org.project.service.TraduzProdutoService;
 
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -17,6 +18,13 @@ public class Main {
                 .withType(Produto.class).build().parse();
 
         for (Produto produto : produtos) {
+            System.out.println(produto);
+        }
+
+        TraduzProdutoService traducaoService = new TraduzProdutoService();
+
+        for (Produto produto : produtos) {
+            traducaoService.traduzir(produto);
             System.out.println(produto);
         }
     }
